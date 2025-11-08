@@ -1,0 +1,11 @@
+root@99a699e5a01a:/# apt install nodejs npm
+    Need to get 211 MB of archives.
+    After this operation, 898 MB of additional disk space will be used.
+    Do you want to continue? [Y/n] y
+    Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 liblocale-gettext-perl amd64 1.07-6ubuntu5 [15.8 kB]
+    .
+    .
+    .
+
+root@99a699e5a01a:/# node /usr/src/app/index.js
+    Hello World

@@ -1,0 +1,35 @@
+> docker start -i hopeful_knuth
+    root@99a699e5a01a:/#
+
+root@99a699e5a01a:/# apt update
+    Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+    Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+    Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+    Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+    .
+    .
+    .
+
+root@99a699e5a01a:/# apt install vim
+    Reading package lists... Done
+    Building dependency tree... Done
+    Reading state information... Done
+    The following additional packages will be installed:
+    libexpat1 libgpm2 libpython3.12-minimal libpython3.12-stdlib libpython3.12t64 libreadline8t64 libsodium23
+    libsqlite3-0 media-types netbase readline-common tzdata vim-common vim-runtime xxd
+    Suggested packages:
+    gpm readline-doc ctags vim-doc vim-scripts
+    The following NEW packages will be installed:
+    libexpat1 libgpm2 libpython3.12-minimal libpython3.12-stdlib libpython3.12t64 libreadline8t64 libsodium23
+    libsqlite3-0 media-types netbase readline-common tzdata vim vim-common vim-runtime xxd
+    0 upgraded, 16 newly installed, 0 to remove and 2 not upgraded.
+    Need to get 16.4 MB of archives.
+    After this operation, 72.1 MB of additional disk space will be used.
+    Do you want to continue? [Y/n] y
+    Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.3 [88.0 kB]
+    .
+    .
+    .
+
+root@99a699e5a01a:/# vim /usr/src/app/index.js
+    console.log('Hello World')
