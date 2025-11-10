@@ -1,0 +1,58 @@
+> docker exec -it todo-backend-mongo-1 bash
+    root@ae9ac74a04a9:/#
+
+root@ae9ac74a04a9:/# mongosh -u root -p example
+    Current Mongosh Log ID: 691140aa9d6eb55567ce5f46
+    Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.8
+    Using MongoDB:          8.2.1
+    Using Mongosh:          2.5.8
+
+    For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+    ------
+    The server generated these startup warnings when booting
+    2025-11-10T01:00:28.226+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+    2025-11-10T01:00:28.226+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+    2025-11-10T01:00:28.226+00:00: We suggest setting the contents of sysfsFile to 0.
+    2025-11-10T01:00:28.226+00:00: vm.max_map_count is too low
+    2025-11-10T01:00:28.226+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+    ------
+
+    test>
+
+test> show dbs
+    admin         100.00 KiB
+    config         96.00 KiB
+    local          72.00 KiB
+    the_database   56.00 KiB
+    test>
+
+test> use the_database
+    switched to db the_database
+    the_database>
+
+the_database> show collections
+    todos
+    the_database>
+
+the_database> db.todos.find({})
+    [
+    {
+        _id: ObjectId('6911391f7d674e9a2ece5f47'),
+        text: 'Write code EDITED',
+        done: true
+    },
+    {
+        _id: ObjectId('6911391f7d674e9a2ece5f48'),
+        text: 'Learn about containers',
+        done: false
+    }
+    ]
+    the_database>
+
+the_database> db.todos.insertOne({text: "Increase the number of tools in my tool belt", done: false})
+    {
+    acknowledged: true,
+    insertedId: ObjectId('691141be9d6eb55567ce5f48')
+    }
+    the_database>
