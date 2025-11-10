@@ -1,5 +1,6 @@
 const express = require('express');
-const { Todo } = require('../mongo')
+const { Todo } = require('../mongo');
+const { getAsync, setAsync, incrAsync } = require('../redis');
 const router = express.Router();
 
 /* GET todos listing. */
@@ -8,12 +9,25 @@ router.get('/', async (_, res) => {
   res.send(todos);
 });
 
+router.get('/statistics', async (_req, res) => {
+  try {
+    const raw = await getAsync('added_todos');
+    const added_todos = parseInt(raw, 10) || 0;
+    if (raw === null) await setAsync('added_todos', '0');
+    res.json({ added_todos });
+  } catch (err) {
+    console.error('Failed to read stats:', err);
+    res.json({ added_todos: 0 });
+  }
+});
+
 /* POST todo to listing. */
 router.post('/', async (req, res) => {
   const todo = await Todo.create({
     text: req.body.text,
     done: false
   })
+  await incrAsync('added_todos');
   res.send(todo);
 });
 
