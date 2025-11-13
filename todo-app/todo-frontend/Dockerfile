@@ -2,11 +2,13 @@ FROM node:20
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY ./todo-frontend/package.json ./todo-frontend/package-lock.json ./
 
 RUN npm ci
 
-ENV VITE_BACKEND_URL="http://localhost:5000/"
+COPY ./todo-frontend .
+
+ENV VITE_BACKEND_URL="/api/"
 
 RUN npm run build
 
